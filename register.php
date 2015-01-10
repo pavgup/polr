@@ -2,7 +2,7 @@
 /*
  * Registration Page
  */
-require_once('lib-core.php');
+require_once('lib/lib-core.php');
 require_once('layout-headermd.php');
 
 echo "<h2 style='color:green'>Register</h2>";

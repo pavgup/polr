@@ -1,6 +1,6 @@
 <?php
 //Polr Redirector Core
-require_once('lib-core.php');
+require_once('lib/lib-core.php');
 if (is_string($_GET['u'])) {
     $val = $mysqli->real_escape_string($_GET['u']);
 } else {

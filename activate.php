@@ -1,6 +1,6 @@
 <?php
 
-require_once 'lib-core.php';
+require_once 'lib/lib-core.php';
 $ruser = $_GET['user'];
 $rusersan = $mysqli->real_escape_string($ruser);
 $rkey = $_GET['key'];

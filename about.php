@@ -4,7 +4,7 @@ require_once 'layout-headermd.php';
 require_once('version.php');
 ?>
 <?php
-require_once('lib-core.php');
+require_once('lib/lib-core.php');
 if ($_SESSION['role']=="adm") {
     echo "
     <h1>About Polr</h1>

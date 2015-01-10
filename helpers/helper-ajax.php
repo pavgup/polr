@@ -1,5 +1,5 @@
 <?php
-require_once('lib-core.php');
+require_once('../lib/lib-core.php');
 class ajaxhandler {
     public function __construct() {
         global $mysqli;

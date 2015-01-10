@@ -1,5 +1,5 @@
 <?php
-require_once('lib-auth.php');
+require_once('lib/lib-auth.php');
 $polrauth = new polrauth();
 if ($polrauth->islogged() != false) {
 	header("Location: ucp.php");

@@ -1,8 +1,8 @@
 <?php
 
-require_once '../lib-core.php';
+require_once '../lib/lib-core.php';
 require_once 'headerpage.php';
-require_once '../lib-auth.php';
+require_once '../lib/lib-auth.php';
 $auth = new polrauth();
 $isadmin = $auth->isadminli();
 if (!is_array($auth->islogged())) {

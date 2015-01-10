@@ -38,7 +38,7 @@
                 </ul>
                 <ul class="nav pull-right navbar-nav">
                     <?php
-                    require_once('lib-auth.php');
+                    require_once('lib/lib-auth.php');
                     $polrauth = new polrauth();
                     $polrauth->headblock();
                     ?>

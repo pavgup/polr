@@ -85,7 +85,7 @@ if(!@include('config.php')) {
                     <li><a href="about.php">About</a></li>
                 </ul>
                 <ul class="nav pull-right navbar-nav">
-                    <?php include('lib-auth.php');
+                    <?php include('lib/lib-auth.php');
                     $polrauth = new polrauth();
                     $polrauth->headblock(); ?>
                     <?php require_once('config.php'); if ($regtype != 'none'){ echo '<li><a href="register.php">Sign Up</a></li>';}?>

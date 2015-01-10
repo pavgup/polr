@@ -1,7 +1,7 @@
 <?php
 
-require_once('lib-password.php'); //password hashing lib - crpypt forward compat
-require_once('lib-core.php');
+require_once('lib/lib-password.php'); //password hashing lib - crpypt forward compat
+require_once('lib/lib-core.php');
 require_once('helpers/helper-mailsend.php');
 
 $sgmail = new sgmail();

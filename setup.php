@@ -28,7 +28,7 @@
             <?php
             @(include('config.php'));
             include ('version.php');
-            require_once 'lib-password.php';
+            require_once 'lib/lib-password.php';
             date_default_timezone_set('UTC');
             $mysqlnd = function_exists('mysqli_fetch_all');
 
@@ -121,7 +121,7 @@
                 }
                 echo "Successfully created config. ";
                 fclose($handle);
-                require_once('lib-core.php');
+                require_once('lib/lib-core.php');
                 $path = $_POST['path'];
                 if (strlen($path) > 2) {
                     $data = "<IfModule mod_rewrite.c>

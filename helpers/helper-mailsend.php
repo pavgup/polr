@@ -1,6 +1,6 @@
 <?php
 
-require_once 'lib-core.php';
+require_once '../lib/lib-core.php';
 require 'vendor/PHPMailer/PHPMailerAutoload.php';
 
 class sgmail {

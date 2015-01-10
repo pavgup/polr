@@ -1,7 +1,7 @@
 <?php
-require_once("lib-core.php");
+require_once("lib/lib-core.php");
+require_once('lib/lib-auth.php');
 require_once('layout-headerlg.php');
-require_once('lib-auth.php');
 $polrauth = new polrauth();
 $protocol = '://';
 $hpi = $_POST['hp'];

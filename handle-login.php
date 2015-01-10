@@ -1,7 +1,7 @@
 <?php
-require_once('lib-password.php'); //password hashing lib - crpypt forward compat
-require_once('lib-core.php');
-require_once('lib-auth.php');
+require_once('lib/lib-password.php'); //password hashing lib - crpypt forward compat
+require_once('lib/lib-core.php');
+require_once('lib/lib-auth.php');
 $polrauth = new polrauth();
 $authcreds['username'] = $mysqli->real_escape_string($_POST['username']);
 $authcreds['password'] = $mysqli->real_escape_string($_POST['password']);
