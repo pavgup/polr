@@ -91,7 +91,7 @@ if ($regtype == 'email') {
             . "<br><br>If you did not register at {$wsn} (<a href='//{$wsa}'>{$wsn}</a>), please disregard this email."
             . "<br>";
     $to = $reg['email'];
-    $sm = $sgmail->sendmail($to, 'Polr Account Validation', $sgmsg);
+    $sm = $sgmail->sendmail($to, '$wsn Account Validation', $sgmsg);
 
 
     require_once 'layout-headerlg.php';
