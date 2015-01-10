@@ -83,7 +83,7 @@ if (isset($_GET['key']) && isset($_GET['username'])) {
         . "<br /><div id='warn' style='padding-top: 30px;'></div></br />"
         . "<input type='submit' id='submit' class='form-control' style='width: 450px;' value='Change Password' />"
         . "</form>";
-        echo "<script src='fpass.js'></script>";
+        echo "<script src='js/fpass.js'></script>";
         require_once 'layout-footerlg.php';
         die();
     }
