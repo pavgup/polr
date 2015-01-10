@@ -47,7 +47,7 @@
                 <li class="visible-xs"><a href="admin">Sign In/Dashboard</a></li>
             </ul>
             <ul id="navbar" class="nav pull-right navbar-nav hidden-xs">
-                <?php require_once('lib-auth.php');
+                <?php require_once('lib/lib-auth.php');
                 $polrauth = new polrauth();
                 $polrauth->headblock(); ?>
                 <?php require_once('config.php'); if ($regtype != 'none'){ echo '<li><a href="register.php">Sign Up</a></li>';}?>
