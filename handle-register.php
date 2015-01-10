@@ -3,34 +3,35 @@
 require_once('lib-password.php'); //password hashing lib - crpypt forward compat
 require_once('lib-core.php');
 require_once('helper-mailsend.php');
+
 $sgmail = new sgmail();
-
-
 $isemail = filteremail($_POST['email']);
+
+// TODO: use templates here
 
 if (!$isemail) {
     require_once 'layout-headerlg.php';
     echo "Please enter a valid email. <br><br><a href='register.php'>Go Back</a>";
     require_once 'layout-footerlg.php';
-    die(); //prevent user from registering
+    die();
 }
 if ((strlen($_POST['username']) > 15) || (strlen($_POST['password']) > 25) || (strlen($_POST['email']) > 50)) {
     require_once 'layout-headerlg.php';
     echo "Your username must not be over 15 characters, password must be under 25 characters but over 6 characters, and email must be under 50 charcaters. <br><br><a href='register.php'>Go Back</a>";
     require_once 'layout-footerlg.php';
-    die(); //prevent user from registering
+    die();
 }
 if (strlen($_POST['username']) == 0 || strlen($_POST['password']) < 4 || strlen($_POST['email']) == 0) {
     require_once 'layout-headerlg.php';
     echo "Fields may not be left blank, password must be over 4 characters. <br><br><a href='register.php'>Go Back</a>";
     require_once 'layout-footerlg.php';
-    die(); //prevent user from registering
+    die();
 }
 if (!ctype_alnum($_POST['username'])) {
     require_once 'layout-headerlg.php';
     echo "Your username must be alphanumerical (numbers and letters only). <br><br><a href='register.php'>Go Back</a>";
     require_once 'layout-footerlg.php';
-    die(); //prevent user from registering
+    die();
 }
 /*
   if ($_POST['tos']!='accept') {
@@ -41,10 +42,14 @@ if (!ctype_alnum($_POST['username'])) {
   }
  */
 
-$salt = mcrypt_create_iv(23, MCRYPT_DEV_URANDOM); //create salt
+$salt = mcrypt_create_iv(23, MCRYPT_DEV_URANDOM);
 $rstr = mcrypt_create_iv(23, MCRYPT_DEV_URANDOM);
 
-$reg = array("username" => $mysqli->real_escape_string($_POST['username']),"email" => $mysqli->real_escape_string($_POST['email']), "password" => $mysqli->real_escape_string($_POST['password']), "rkey" => sha1($mysqli->real_escape_string($_POST['username']) . date('zjDygs') . $rstr));
+$reg = array(
+    "username" => $mysqli->real_escape_string($_POST['username']),
+    "email" => $mysqli->real_escape_string($_POST['email']),
+    "password" => $mysqli->real_escape_string($_POST['password']),
+    "rkey" => sha1($mysqli->real_escape_string($_POST['username']) . date('zjDygs') . $rstr));
 
 //check if already exists
 $ireg;
@@ -54,28 +59,21 @@ $ireg['3'] = sqlfetch('auth', 'valid', 'email', $reg['email']);
 
 
 
-if (($ireg['1'] == true || $ireg['2'] == true) && $ireg['3'] == 1) {
+if (($ireg['1'] || $ireg['2']) && $ireg['3']) {
     require_once 'layout-headerlg.php';
     echo "Username/email already in use. <br><br><a href='register.php'>Go Back</a>";
     require_once 'layout-footerlg.php';
-    die(); //prevent user from registering
+    die();
 }
 
 $opts = array(
     'cost' => 10,
     'salt' => $salt
 );
+
 $hashed = password_hash($reg['password'], PASSWORD_BCRYPT, $opts);
 $reg['password'] = $hashed;
-
-
-
-if ($regtype == "free") {
-    $active = "1";
-}
-else {
-    $active = "0";
-}
+$active = ($regtype == "free" ? "1" : "0")
 
 //$qr = "INSERT INTO `auth` (username,email,password,rkey,valid,ip) VALUES ('{$reg['username']}','{$reg['email']}','{$hashed}','{$reg['rkey']}','{$active}', '{$ip}');";
 //$rr = $mysqli->query($qr) or showerror();
