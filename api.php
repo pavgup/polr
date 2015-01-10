@@ -35,12 +35,7 @@ $query = "SELECT `valid`,`quota` FROM `api` WHERE apikey='{$apikey}'";
 $result = $mysqli->query($query) or showerror();
 $validrow = mysqli_fetch_assoc($result);
 $userquota = $validrow['quota'];
-//check if valid
-if (!$validrow['valid']) {
-    $api_key_valid = 0;
-} else {
-    $api_key_valid = 1;
-}
+$api_key_valid = !$validrow['valid'];
 
 if (!$api_key_valid) {
     header("HTTP/1.0 401 Unauthorized"); //Access denied - invalid key
