@@ -3,17 +3,15 @@
 require_once '../lib/lib-core.php';
 require 'vendor/PHPMailer/PHPMailerAutoload.php';
 
+/*
+ * Polr Mailer Script
+*/
+
 class sgmail {
-    /**
-     * A class to send mail (wrapper around PHPMail).
-     */
+
     public function sendmail($to, $subject, $message) {
-        /**
-         * Send an email to the given recipient, with the given subject and
-         * message.
-         */
-        global $wsn;
-        global $debug;
+		global $wsn;
+		global $debug;
         try {
             global $smtpCfg;
             $smtpHost = $smtpCfg['servers'];
@@ -26,41 +24,48 @@ class sgmail {
             return false;
         }
 
-        $mail = new PHPMailer;
-        if($debug) {
-            mail->SMTPDebug = 3;
-        }
 
-        $mail->isSMTP();
-        $mail->Host = $smtpHost;
-        $mail->SMTPAuth = true;
-        $mail->Username = $smtpUsername;
-        $mail->Password = $smtpPassword;
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+        // mail($to,$subject,$message);
+		$mail = new PHPMailer;
 
-        $mail->From = $smtpFrom;
-        $mail->FromName = $wsn;
-        $mail->addAddress($to);
+		//$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
-        $mail->WordWrap = 80;
-        $mail->isHTML(true);
+		$mail->isSMTP();                                      // Set mailer to use SMTP
+		$mail->Host = $smtpHost;  // Specify main and backup SMTP servers
+		$mail->SMTPAuth = true;                               // Enable SMTP authentication
+		$mail->Username = $smtpUsername;                 // SMTP username
+		$mail->Password = $smtpPassword;                           // SMTP password
+		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+		$mail->Port = 587;                                    // TCP port to connect to
 
-        $mail->Subject = $subject;
-        $mail->Body    = $message;
+		$mail->From = $smtpFrom;
+		$mail->FromName = $wsn;
+		$mail->addAddress($to);     						  // Add a recipient
 
-        // In case the user's email client can't handle HTML messages, we
-        // provide an alternative plain-text body.
-        $mail->AltBody = strip_tags($message);
+		/*
+		$mail->addAddress('ellen@example.com');
+		$mail->addReplyTo('info@example.com', 'Information');
+		$mail->addCC('cc@example.com');						  // Optional recipients.
+		$mail->addBCC('bcc@example.com');
+		*/
 
-        if(!$mail->send()) {
-            echo 'Email could not be sent.';
-            if ($debug) {
-                echo 'Mailer Error: ' . $mail->ErrorInfo;
-            }
+		$mail->WordWrap = 80;                                 // Set word wrap to 50 characters
+		$mail->isHTML(true);                                  // Set email format to HTML
+
+		$mail->Subject = "$wsn Account Activation";
+		$mail->Body    = $message;
+		$mail->AltBody = strip_tags($message); 				  // Plain text alternative
+
+		if(!$mail->send()) {
+			echo 'Email could not be sent.';
+
+			if ($debug) {
+				echo 'Mailer Error: ' . $mail->ErrorInfo;
+			}
             showerror();
             return false;
-        }
+		}
         return true;
-    }
+	}
+
 }

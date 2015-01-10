@@ -1,4 +1,19 @@
 <?php
+
+/*
+# Copyright (C) 2013-2015 Chaoyi Zha
+# Polr is an open-source project licensed under the GPL.
+# The above copyright notice and the following license are applicable to
+# the entire project, unless explicitly defined otherwise.
+# http://github.com/cydrobolt/polr
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+# See http://www.gnu.org/copyleft/gpl.html  for the full text of the
+# license.
+#
+*/
 @(require_once('config.php'));
 include('version.php');
 $debug = 0; // Set to 1 in order to enable debug mode (shows sensitive database info), use for troubleshooting
@@ -70,7 +85,7 @@ function sqlrun($query) {
     $queryrs = $query;
     $resultrs = $mysqli->query($queryrs) or ($err =  $mysqli->error);
     if (strstr($err, "already exists")) {
-        echo "<br />Could not create tables because the database already has Polr tables (perhaps from a previous installation?). Delete the existing Polr table and try again. You can also export the database and restore it after installation, however, the old database may not be compatible. ";
+        echo "<br />Could not create tables because the database already has Polr tables (perhaps from a previous installation?). If you wanted a clean install, delete the existing Polr table and try again. Otherwise, your existing database may be used. ";
         die();
     }
     return true;

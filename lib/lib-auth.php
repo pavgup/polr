@@ -1,6 +1,19 @@
 <?php
-
-require_once('lib-core.php'); //load config etc
+/*
+# Copyright (C) 2013-2015 Chaoyi Zha
+# Polr is an open-source project licensed under the GPL.
+# The above copyright notice and the following license are applicable to
+# the entire project, unless explicitly defined otherwise.
+# http://github.com/cydrobolt/polr
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+# See http://www.gnu.org/copyleft/gpl.html  for the full text of the
+# license.
+#
+*/
+require_once('lib-core.php');
 require_once('lib-password.php');
 
 class polrauth {
@@ -16,34 +29,7 @@ class polrauth {
             return $data;
         }
     }
-    public function prepare ($query) {
-        global $mysqli;
-        global $debug;
-        if(!($p = $mysqli->prepare($query))) {
-            if ($debug === 1) {
-                echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
-            }
-            else {
-                showerror();
-                return false;
 
-            }
-        }
-        return $p;
-    }
-    public function gr ($p) {
-        global $debug;
-        // Fetches result from prepared statement
-        if(!($g = $p->get_result())) {
-            if ($debug === 1) {
-                echo "Prepare failed: (" . $p->errno . ") " . $p->error;
-            }
-            showerror();
-            return false;
-
-        }
-        return $g;
-    }
 
     public function isadminli() {
         if ($_SESSION['li'] !== sha1('li')) {
@@ -81,7 +67,7 @@ class polrauth {
 
                             <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">
                                 <li><a tabindex="-1" href="admin/index.php">Dashboard</a></li>
-                                <li><a tabindex="-1" href="admin/index.php">Settings</a></li>
+                                <li><a tabindex="-1" href="admin/index.php#settings">Settings</a></li>
                                 <li><a tabindex="-1" href="logout.php">Logout</a></li>
                             </ul>
                         </li>
@@ -94,7 +80,7 @@ class polrauth {
 
                                 <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu">
                                     <li><a tabindex="-1" href="index.php">Dashboard</a></li>
-                                    <li><a tabindex="-1" href="index.php">Settings</a></li>
+                                    <li><a tabindex="-1" href="index.php#settings">Settings</a></li>
                                     <li><a tabindex="-1" href="../logout.php">Logout</a></li>
                                 </ul>
                             </li>

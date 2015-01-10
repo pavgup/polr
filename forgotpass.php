@@ -8,8 +8,9 @@ if ($fpass == false) {
 require_once 'lib/lib-core.php'; // require core libs
 require_once 'lib/lib-auth.php'; // require auth libs
 require_once 'lib/lib-password.php'; // require password encryption libs
-require_once 'helper-mailsend.php'; // require mail libs
+require_once 'helpers/helper-mailsend.php'; // require mail libs
 require_once 'lib/fpasslib.php'; // require fpass functions
+
 // require_once('ayah.php');
 
 $polrauth = new polrauth();
