@@ -33,7 +33,7 @@ function bve($bv) {
 
 if(!strstr($_POST['urlr'], $protocol)) {
 
-    $urlr = "https".$protocol.trim($_POST['urlr']); //add https:// if :// not there
+    $urlr = "http".$protocol.trim($_POST['urlr']); //add http:// if :// not there
 }
 else {
     $urlr = trim($_POST['urlr']);
