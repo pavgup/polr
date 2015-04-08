@@ -18,6 +18,7 @@
 <head>
     <title><?php require_once('config.php');echo $wsn;?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="URL shorteners suck; they take us for sheep. Insecure lumbering garbage isn't acceptable. Well, that's why gp.gg exists. Here's to the lost art of efficiency.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?php if (!$theme) {echo 'css/bootstrap.css';}else {echo $theme;}?>"/>
     <link rel="stylesheet" href="css/main.css"/>
@@ -26,7 +27,17 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-
+<script>
+var _prum = [['id', '550481fcabe53dbf5fbfc4d4'],
+             ['mark', 'firstbyte', (new Date()).getTime()]];
+(function() {
+    var s = document.getElementsByTagName('script')[0]
+      , p = document.createElement('script');
+    p.async = 'async';
+    p.src = '//rum-static.pingdom.net/prum.min.js';
+    s.parentNode.insertBefore(p, s);
+})();
+</script>
 
 </head>
 <body style="padding-top:60px">
@@ -44,7 +55,6 @@
             </div>
 
             <ul id="navbar" class="nav navbar-collapse collapse navbar-nav" id="nbc">
-                <li><a href="about.php">About</a></li>
                 <li class="visible-xs"><a href="admin">Sign In/Dashboard</a></li>
             </ul>
             <ul id="navbar" class="nav pull-right navbar-nav hidden-xs">

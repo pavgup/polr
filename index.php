@@ -9,7 +9,9 @@ if (strlen($_SESSION['username']) < 1 && $li_show_front === true) {
 
 require_once('layout-headerlg.php');
 ?>
-<h1 class='title'><?php require_once('config.php');echo $wsn;?></h1>
+<h1 class='title'><?php require_once('config.php');echo $wsn;?> - beta</h1>
+<h4>URL shorteners <strong>suck</strong>; they take us for <strong>sheep</strong>. Insecure lumbering garbage isn't acceptable.</h4>
+<h4>Well, that's why <a href="https://gp.gg/">gp.gg</a> exists. Here's to the lost art of efficiency. -- <a href="https://twitter.com/pavgup">@pavgup</a></h2>
 <form id='shortenform' method="POST" action="createurl.php" role="form">
     <input type="text" class="form-control" placeholder="URL" id="url" value="http://" name="urlr" />
     <div id='options'>

@@ -44,7 +44,6 @@
             </div>
 
             <ul id="navbar" class="nav navbar-collapse collapse navbar-nav" id="nbc">
-                <li><a href="../about.php">About</a></li>
                 <li class="visible-xs"><a href="index.php">Sign In/Dashboard</a></li>
             </ul>
             <ul class="nav pull-right navbar-nav hidden-xs">

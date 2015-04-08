@@ -107,6 +107,7 @@
                             "from" => \''.$_POST['smtp-from'].'\',
                             "username" => \''.$_POST['smtp-username'].'\',
                             "password" => \''.$_POST['smtp-password'].'\',
+                            "port" => \''.$_POST['smpt-port'].'\',
                         );
                     ';
                     $data .= $smtpSection;
@@ -285,6 +286,7 @@
                 echo "SMTP Username: <input type=\"text\" class='form-control' style='width:650px' name=\"smtp-username\" placeholder=\"example@gmail.com\"><br>";
                 echo "SMTP Password: <input type=\"password\" class='form-control' style='width:650px' name=\"smtp-password\" placeholder=\"password\"><br>";
                 echo "SMTP From: <input type=\"text\" class='form-control' style='width:650px' name=\"smtp-from\" placeholder=\"example@gmail.com\"><br>";
+                echo "SMTP Port: <input type=\"text\" class='form-control' style='width:650px' name=\"smtp-port\" placeholder=\"465\"><br>";
 
 
                 echo "<br /><b style=\"text-align:center\">Other Settings</b><br />Registration: <select name='reg' style='width:650px' class='form-control'>"

@@ -18,6 +18,7 @@ class sgmail {
             $smtpFrom = $smtpCfg['from'];
             $smtpUsername = $smtpCfg['username'];
             $smtpPassword = $smtpCfg['password'];
+            $smtpPort = $smtpCfg['port'];
         } catch (Exception $e) {
             echo "Email not properly configured. Contact the site owner to report this problem. <br />";
             showerror();
@@ -36,7 +37,7 @@ class sgmail {
 		$mail->Username = $smtpUsername;                 // SMTP username
 		$mail->Password = $smtpPassword;                           // SMTP password
 		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-		$mail->Port = 587;                                    // TCP port to connect to
+		$mail->Port = $smtpPort;                                    // TCP port to connect to
 
 		$mail->From = $smtpFrom;
 		$mail->FromName = $wsn;
