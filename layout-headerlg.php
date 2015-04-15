@@ -56,7 +56,8 @@ var _prum = [['id', '550481fcabe53dbf5fbfc4d4'],
             </div>
 
             <ul id="navbar" class="nav navbar-collapse collapse navbar-nav" id="nbc">
-                <li class="visible-xs"><a href="admin">Sign In/Dashboard</a></li>
+                <li class="visible-xs"><a href="login.php">Sign In</a></li>
+                <li class="visible-xs"><a href="admin/index.php">Dashboard</a></li>
             </ul>
             <ul class="nav pull-right navbar-nav hidden-xs">
                 <?php require_once('lib-auth.php');
